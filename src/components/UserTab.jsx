@@ -5,8 +5,7 @@ import loadingGif from "../assets/loading.gif";
 
 const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL;
-console.log("API_KEY", API_KEY);
-console.log("BASE_URL", BASE_URL);
+
 
 const UserTab = () => {
   const [state, setState] = useState({
