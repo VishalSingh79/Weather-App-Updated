@@ -1,10 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { removeBookmark } from "../store";
 
 
 const HistoryTab = () => {
   const bookmarks = useSelector((state) => state.weather.bookmarks); 
- 
+  const dispatch = useDispatch();
+
+  const handleRemoveCity = (city) => {
+    dispatch(removeBookmark(city));
+  };
 
   return (
     <div className="history-container">
@@ -14,8 +19,14 @@ const HistoryTab = () => {
       ) : (
         <ul className="history-list">
           {bookmarks.map((city, index) => (
-            <li key={`${city}-${index}`} onClick={() => setSelectedCity(city)}>
-              {city}
+            <li key={`${city}-${index}`} className="history-item">
+              <p style={{fontSize:"22px"}}>{city}</p>
+              <button 
+                onClick={() => handleRemoveCity(city)}
+                className="remove-btn"
+              >
+                remove
+              </button>
             </li>
           ))}
         </ul>
